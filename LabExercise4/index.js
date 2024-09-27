@@ -10,7 +10,11 @@ app.get('/user', (request, response) => {
     console.log(request.query)
     const fnm = request.query.fnm;
     const lnm = request.query.lnm;
-    response.send(`First Name: ${fnm}, Last Name: ${lnm}`);
+    const user = {
+        firstname: fnm,
+        lastname: lnm
+    }
+    response.send(user);
 });
 
 // app.get('/user', (request, response) => {
