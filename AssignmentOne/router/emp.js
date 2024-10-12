@@ -30,10 +30,11 @@ router.post('/employees', async (req, res) =>{
 })
 
 router.get('/employees/:eid', async (req, res)=>{
-    const emp = await empSchema.findById(req.params.eid);
-    if(emp){
+    try{
+        const emp = await empSchema.findById(req.params.eid);
         res.status(200).send(emp)
-    }else{
+        
+    }catch(err){
         res.status(404).send({message: `cannot find the employee with id ${req.params.eid}`})
     }
 })
@@ -57,8 +58,12 @@ router.put('/employees/:eid', async (req, res)=>{
 router.delete('/employees', async (req, res)=>{
     try{
         const eid = req.query.eid;
-        await empSchema.deleteOne({id: eid});
-        res.status(204).send({message: "Employee deleted successfully."})
+        const emp = await empSchema.findByIdAndDelete(eid);
+        if(emp){
+            res.status(204).send({message: "Employee deleted successfully."})
+        }else{
+            res.status(404).send({message: `cannot find the employee with id ${req.query.eid}`})
+        }
     }catch(err){
         res.status(500).send(err);
     }

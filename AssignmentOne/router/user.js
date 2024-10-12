@@ -25,11 +25,17 @@ router.post('/signup', async (req, res)=>{
 })
 
 router.post('/login', async (req, res)=>{
-    if(!req.body.email){
+    if(!req.body.username && !req.body.email){
         res.status(400).send({message: 'Request cannot be empty'});
     }
     try{
-        const user = await userSchema.findOne({email: req.body.email});
+        let user = null;
+        if(req.body.username){
+            user = await userSchema.findOne({username: req.body.username});
+        }
+        if(req.body.email){
+            user = await userSchema.findOne({email: req.body.email});
+        }
         if(user){
             const matchPw = await bcrypt.compare(req.body.password, user.password);
             if(matchPw){            

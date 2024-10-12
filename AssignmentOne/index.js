@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose')
 const userRouter = require('./router/user')
 const empRouter = require('./router/emp')
-const SERVER_PORT = process.env.NODE_ENV || 3000;
+const SERVER_PORT = process.env.NODE_ENV || 3002;
 
 const app = express();
 const DB_URL = "mongodb+srv://admin:pass@cluster0.nnsxa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
