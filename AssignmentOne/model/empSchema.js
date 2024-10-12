@@ -1,32 +1,33 @@
 const mongoose = require('mongoose');
 
-const empSchema = new mongoose.Schema({
+
+const emp = new mongoose.Schema({
     first_name: {
         type: String,
-        required: true
+        required: true,
     },
-    last_name:{
+    last_name: {
         type: String,
         required: true
     },
-    email: {
-        type: String,
+    email:{
+        type: String, 
         required: true
     },
-    position: {
-        type: String,
+    position:{
+        type: String, 
         required: true
     },
     salary:{
-        type: Number,
+        type: Number, 
         required: true
     },
-    date_of_joining: {
-        type: Date,
+    date_of_joining:{
+        type: Date, 
         required: true
     },
     department:{
-        type: String,
+        type: String, 
         required: true
     },
     created_at:{
@@ -35,9 +36,9 @@ const empSchema = new mongoose.Schema({
     },
     updated_at:{
         type: Date,
-        default: Date.now()
+        dafault: Date.now()
     }
 })
 
-const emp = mongoose.model('emp', empSchema);
-module.exports = emp;
+const empSchema = mongoose.model('empSchema', emp);
+module.exports = empSchema;
