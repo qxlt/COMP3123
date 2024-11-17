@@ -1,0 +1,32 @@
+.head{
+    display: flex;
+    /* margin-bottom: 20px; */
+    background-color: lightgray;
+    height: 6vh;
+    justify-content: flex-start;
+}
+
+.head p{
+    padding: 10px 0 0 10px;
+}
+
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+    background-color: plum;
+}
+
+.pic{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.picture-prof{
+    text-align: center;
+    margin: 20px;
+}
